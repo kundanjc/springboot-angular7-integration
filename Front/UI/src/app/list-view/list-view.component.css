@@ -1,0 +1,15 @@
+.note-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.keep-c-list-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    flex-direction: column;
+    flex-grow: 1;
+}

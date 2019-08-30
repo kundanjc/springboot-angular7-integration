@@ -1,0 +1,39 @@
+
+<router-outlet name="catEditOutlet"></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary"></mat-toolbar>
+    <mat-nav-list>
+      <button mat-button (click)="onNotes()">
+        
+        <span>Notes</span>
+      </button>
+      <button mat-button (click)="onCategory()">
+        
+        <span>Category</span>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="textcenter">
+        <span>{{applicationTitle}}</span>
+      </div>
+      <div class="button">
+        <button mat-button (click)="onLogout()">logout</button>
+ 
+ 
+      </div>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <div class="textcenter">
+  <app-user [userId]="user.userId"></app-user>
+</div> -->

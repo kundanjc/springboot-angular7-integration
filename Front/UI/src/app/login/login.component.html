@@ -1,0 +1,25 @@
+<div class="login-container">
+
+    <form class="login-form" [formGroup]="loginForm" (submit)='loginSubmit(loginForm)'>
+        <h6>Enter UserID and Password !!!</h6>
+        <mat-form-field>
+            <input class="userId" matInput [formControl]='userId' placeholder="Enter User ID">
+            <!-- <mat-error *ngIf = 'username.invalid'>{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="loginForm.get('userId').dirty && loginForm.get('userId').hasError('required')">userId Cannot be blank !!!</mat-error>
+            <mat-error *ngIf="loginForm.get('userId').dirty && loginForm.get('userId').hasError('minlength')">userId Cannot be less than 3 characters !!!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input class="password" matInput type='password' [formControl]='password' placeholder="Enter Password">
+            <!-- <mat-error *ngIf = 'password.invalid'>{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">Password Cannot be blank !!!</mat-error>
+            <mat-error *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('minlength')">Password Cannot be less than 3 characters !!!</mat-error>
+        </mat-form-field>
+        <button type="submit" style="margin-right: 8px;" mat-raised-button color="primary">Submit</button><br/>
+      <!--  <a routerLink="/register" class="btn btn-link">Register</a> -->
+        <button style="margin-right: 8px;" mat-raised-button color="primary" (click)="onRegister()">Register</button>
+        <mat-error *ngIf='submitMessage' class="error-message">{{submitMessage}}</mat-error>
+
+    </form>
+    
+</div>

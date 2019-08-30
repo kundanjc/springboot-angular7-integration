@@ -1,0 +1,46 @@
+<div class="reg-container">
+
+    <form class="reg-form" [formGroup]="loginForm" (submit)='onSubmit(loginForm)'>
+        <h6>Enter User Details !!!</h6>
+        <mat-form-field>
+            <input class="userId" matInput [formControl]='userId' placeholder="Enter User ID">
+            <!-- <mat-error *ngIf = 'username.invalid'>{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="loginForm.get('userId').dirty && loginForm.get('userId').hasError('required')">userId Cannot be blank !!!</mat-error>
+            <mat-error *ngIf="loginForm.get('userId').dirty && loginForm.get('userId').hasError('minlength')">userId Cannot be less than 3 characters !!!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input class="firstName" matInput [formControl]='firstName' placeholder="Enter Firstname">
+            <!-- <mat-error *ngIf = 'username.invalid'>{{getErrorMessage()}}</mat-error> -->
+<!--            <mat-error *ngIf="loginForm.get('firstName').dirty && loginForm.get('firstName').hasError('required')">firstName Cannot be blank !!!</mat-error>
+            <mat-error *ngIf="loginForm.get('firstName').dirty && loginForm.get('firstName').hasError('minlength')">firstName Cannot be less than 3 characters !!!</mat-error>-->
+        </mat-form-field>
+
+        <mat-form-field>
+            <input class="lastName" matInput [formControl]='lastName' placeholder="Enter Lastname">
+            <!-- <mat-error *ngIf = 'username.invalid'>{{getErrorMessage()}}</mat-error> -->
+           <!-- <mat-error *ngIf="loginForm.get('lastName').dirty && loginForm.get('lastName').hasError('required')">lastName Cannot be blank !!!</mat-error> -->
+           <!-- <mat-error *ngIf="loginForm.get('lastName').dirty && loginForm.get('lastName').hasError('minlength')">lastName Cannot be less than 3 characters !!!</mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field>
+            <input class="userRole" matInput [formControl]='userRole' placeholder="Enter User role">
+            <!-- <mat-error *ngIf = 'username.invalid'>{{getErrorMessage()}}</mat-error> -->
+            
+            
+        </mat-form-field>
+
+        <mat-form-field>
+            <input class="password" matInput type='password' [formControl]='password' placeholder="Enter Password">
+            <!-- <mat-error *ngIf = 'password.invalid'>{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">Password Cannot be blank !!!</mat-error>
+            <mat-error *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('minlength')">Password Cannot be less than 3 characters !!!</mat-error>
+        </mat-form-field>
+        <button type="submit" style="margin-right: 8px;" mat-raised-button color="primary">Submit</button><br/>
+        <button style="margin-right: 8px;" mat-raised-button color="primary" (click)="onLogin()">Back to Login</button>
+        <!--<a routerLink="/login" class="btn btn-link">Back to Login</a>-->
+        <mat-error *ngIf='submitMessage' class="error-message">{{submitMessage}}</mat-error>
+
+    </form>
+    <label class="errorMessage" >{{errorMessage}}</label>
+</div>
